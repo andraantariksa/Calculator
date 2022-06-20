@@ -1,13 +1,11 @@
 package id.shaderboi.calculator.util.calculator
 
-private val EQUATION_REGEX = Regex("(?<=[-+*/()])|(?=[-+*/()])")
+import java.lang.IllegalStateException
+import java.math.BigInteger
 
 class Calculator {
-    fun isValidExpression(expression: String): Boolean {
-        return expression.matches(EQUATION_REGEX)
-    }
-
-    fun calculate(equation: String): Boolean {
-        TODO()
+    fun calculate(equation: String): BigInteger {
+        val tokens = EquationLexer(equation).getAllTokens()
+        return BigInteger("123")
     }
 }
