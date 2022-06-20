@@ -23,7 +23,7 @@ android {
         }
     }
     buildFeatures {
-        dataBinding = true
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -36,6 +36,7 @@ android {
 
 dependencies {
     implementation(Deps.AndroidX.Core.Core)
+    implementation(Deps.AndroidX.Fragment.FragmentKtx)
     implementation(Deps.AndroidX.AppCompat.AppCompat)
     implementation(Deps.AndroidX.ConstraintLayout.ConstraintLayout)
     implementation(Deps.Google.Android.Material.Material)

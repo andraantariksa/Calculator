@@ -5,6 +5,16 @@ object Deps {
     }
 
     object AndroidX {
+        object Fragment {
+            const val Version = "1.4.1"
+            const val FragmentKtx = "androidx.fragment:fragment-ktx:$Version"
+        }
+
+        object Activity {
+            const val Version = "1.3.1"
+            const val Activity = "androidx.activity:activity-ktx:$Version"
+        }
+
         object Core {
             const val Version = "1.7.0"
             const val Core = "androidx.core:core-ktx:$Version"

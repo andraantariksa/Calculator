@@ -1,7 +1,6 @@
 package id.shaderboi.calculator.util.calculator
 
-import java.lang.IllegalStateException
-import java.math.BigInteger
+import java.math.BigDecimal
 
 class EquationLexer(equation: String) {
     val it = equation.iterator()
@@ -25,11 +24,19 @@ class EquationLexer(equation: String) {
     private fun scanNumber(): Token.Number {
         var numberString = ""
         while (currentChar?.isDigit() == true) {
-            numberString += currentChar!!
+            numberString += currentChar
             nextChar()
         }
 
-        return Token.Number(BigInteger(numberString))
+        if (currentChar == '.') {
+            numberString += "."
+            while (currentChar?.isDigit() == true) {
+                numberString += currentChar
+                nextChar()
+            }
+        }
+
+        return Token.Number(BigDecimal(numberString))
     }
 
     fun nextToken(): Token? {
@@ -53,14 +60,6 @@ class EquationLexer(equation: String) {
             '%' -> {
                 nextChar()
                 Token.Operator(Operator.Modulo)
-            }
-            '(' -> {
-                nextChar()
-                Token.ParenthesisOpen()
-            }
-            ')' -> {
-                nextChar()
-                Token.ParenthesisClose()
             }
             in '0'..'9' -> scanNumber()
             null -> null
